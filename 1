@@ -224,4 +224,71 @@ public static void main(String[] args) {
   다중 루프 
   반복 안에서 다시 반복 할 수 있다. 이런 반복을 루프가 중첩되는 수준에 따라 '이중 루프', '삼중 루프'라고 부른다. 
   
-  실습 1-7 곱셈표 출력하기 
+실습 1-7 곱셈표 출력하기 
+
+public static void main(String[] args) {
+	System.out.println("====곱셈표===");
+		
+	for(int i=1; i<=9; i++) {
+		for (int j =1; j<=9; j++) {
+			System.out.printf("%3d", i*j);
+		}
+		System.out.println();
+	}
+}
+
+<과제 12> ******** p38 
+
+public static void main(String[] args) {
+		System.out.println("====곱셈표===");
+		
+		for(int i=1; i<=9; i++) {
+			System.out.printf("%3d", i);
+			System.out.print("|");
+			 
+			for (int j =1; j<=9; j++) {
+				System.out.printf("%3d", i*j);
+			}
+			System.out.println();
+		}
+	}
+
+<과제 13> ***문제가 뭔말인지 모르겠음 
+<과제 14> 입력한 수를 한변으로 하는 정사각형을 출력 
+public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in); 
+		int a; 
+		System.out.println("수를 입력하세요 ");
+		a = sc.nextInt(); 
+		
+		for(int i=1; i<=a; i++) {
+			for(int j =1; j<=a; j++) {
+				System.out.print("*");
+			}
+			System.out.println();
+		}
+	}
+	
+직각 이등변 삼각형 출력 
+이중 루프를 응용하면 기호를 늘어놓아 삼각형이나 사각형 모양으로 출력할 수 있습니다. 
+<실습 1-8> 
+public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in); 
+		int n; 
+		do {
+			System.out.println("몇단 삼각임?");
+			n = sc.nextInt(); 
+		}while(n<=0);
+		
+		for(int i=1; i<=n ; i++) {
+			for(int j =1; j<=i; j++) {
+				System.out.print("*");
+			}
+			System.out.println();
+		}
+	}
+<과제 15> 직각 이등변 삼각형을 출력하는 부분을 아래와 같은 형식의 메서드로 작성 
+<과제 16> 왼쪽위, 오른쪽 아래가 직각인 이등변 삼각형을 출력하는 메서드 
+<과제 17> 피라미드를 출력하는 메서드를 작성
+
+
