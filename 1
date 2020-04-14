@@ -1,0 +1,227 @@
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		
+		System.out.println("세 정수의 최댓값을 구하자 ");
+		System.out.println("a : "); int a = sc.nextInt(); 
+		System.out.println("b : "); int b = sc.nextInt(); 
+		System.out.println("c : "); int c = sc.nextInt(); 
+		
+		int max =a; 
+		if(b> max) max = b; 
+		if(c> max) max = c; 
+		
+		System.out.println("최대값 : " + max +" "); } 
+
+이 대신에 
+
+public class ExampleClass {
+	public static void main(String[] args) {
+		System.out.println(max3(3,2,1)); 
+		System.out.println(max3(3,2,2));
+		System.out.println(max3(1,2,3));
+
+	}
+  static int max3(int a , int b, int c) {
+		int max = a; 
+		if (b>max) max = b; 
+		if (c>max) max = c; 
+		return max;  
+	}
+}
+'알고리즘': 문제를 해결하기 위한 것으로, 명확하게 정의되고 순서가 있는 유한 개의 규칙으로 이루어진 집합 
+** 메서드의 반환값과 메서드호출식의 평가 
+=> 메서드는 return문에서 처리한 결과값을 원래 호출한 곳으로 반환합니다. max3메서드의 반환값은 int형이고, 메서드의 끝부분에서 변수 max값을 반환합니다.
+예를 들어 max(3,2,1)을 호출하면 그림 1C-3에서 볼 수 있듯이 메서드 호출식 max(3,2,1)을 평가한 값은 int 3이 됩니다. 다만 반환값의 자료형이 void인 메서드는 값을 
+반환하지 않습니다. 
+
+**세 값의 대소 관계와 중앙 값 구하기 <== 이 알고리즘은 퀵 정렬에도 활용됩니다. 
+
+public class ExampleClass {
+
+	public static void main(String[] args) {
+		System.out.println(med3(3,1,5));
+
+	}
+	
+	static int med3(int a , int b, int c) {
+		if(a>=b) {
+			if(b>=c)
+				return b; 
+			else if(a <=c) 
+				return a; 
+			else 
+				return c; 
+		}
+		else if(a>c) {
+			return a; 
+		}
+		else if(b>c) {
+			return c; 
+		}
+		else 
+			return b; 
+	}
+}
+
+//세 값의 대소 관계 13종류의 모든 조합에 대해 중앙값을 구하여 출력하는 프로그램  -->문제가 뭔 말인지 이해가 안감 
+
+** 연산자와 피 연산자 
+프로그래밍 언어의 세계에서는 + , -등의 연산 기호를 연산자(operator)라고 부른다. 그리고 연산의 대상이 되는 것을 피연산자(operand)라고 부른다. 
+예를 들어 a > b 에서 연산자는 > 이고 피연산자는 a , b 이다. 
+
+연산자는 피연산자의 수에 따라 다음과 같이 3종류로 분류된다. 
+
+단항 연산자(unary operator) --> 피연산자 한개 a++ 
+2항 연산자(binary operator) --> 피연산자 2개 a < b 
+3항 연산자(ternary operator) --> 피연산자 3개 a? b: c 
+
+특히 조건 연산자(conditional operator) ? : 는 자바에서 유일한 3항 연산자이다. 식 a ? b : c 는 a가 true 이면 b를 반환하고 false 이면 c를 반환한다. 
+
+
+//1부터 n까지 정수의 합을 구하는 알고리즘 
+// 사용자가 원하는 n값을 받아서 n값 까지의 합을 구하는 알고리즘 
+public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in); 
+		 
+		System.out.println("1부터 n까지의 합을 구한다."); 
+		System.out.print("n의 값 : "); 
+		int n = sc.nextInt(); 
+		
+		int sum =0; 
+		for(int i=0; i<=n; i++) {
+			sum += i; 
+		}
+		System.out.println("1부터" +n +"까지의 합은 " + sum +"입니다. ");
+	}
+	
+ // n에는 음수가 들어 갈 수 없고 양수만 들어갈 수 있다. 
+ public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in); 
+		int n; 
+		
+		System.out.println("1부터 n까지의 합을 구한다."); 
+	
+		do {
+			System.out.println("n의 값"); 
+			n = sc.nextInt(); 
+		} while(n <=0); 
+		//n이 0보다 클 때까지 반복 
+		// 판단이 한번은 일어 나야 할 때 do 를 씀. 
+		
+		
+		int sum =0; 
+		
+		for(int i=1; i<= n; i++) {
+			sum += i; 
+		}
+		System.out.println("1~n 까지의 합" + sum );
+	}
+  <과제 8> *******
+  가우스의 법칙을 이용해서 정수의 합을 구하는 프로그램을 작성하시오 
+    
+    public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in); 
+		int n ,sum = 0;
+		
+		System.out.println("숫자를 입력하세요"); n = sc.nextInt(); 
+		for(int i=1; i<=n; i++) {
+			sum += n+i; 
+			n--; 
+		}
+		System.out.println(sum);
+	}
+  
+  <과제 9>
+  정수 a, b를 포함하여 그 사이의 모든 정수의 합을 구하여 반환하는 아래 매서드를 작성하시오. 
+	
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in); 
+		
+		System.out.println("a : ");
+		int a = sc.nextInt(); 
+		System.out.println("b : "); 
+		int b = sc.nextInt(); 
+		System.out.println("result : " + sumof(a,b)); 
+	}
+	static int sumof(int a, int b) {
+		int result = 0; 
+		if(b>a) {
+			for(int i=a;i<=b;i++) {
+				result+= i;
+			}
+		}else {
+			for(int i=b;i<=a;i++) {
+				result+= i;
+			}	
+		}
+		return result; 
+	}
+  
+  < 과제 10 >
+  do-while문 예제 오른쪽과 같이 두 변수 a, b에 정수를 입력하고 b-a 를 출력하는 프로그램을 작성하시오. 
+  출력의 예) a의 값 :6 b의 값 : 6 a보다 큰 값을 입력하세요! b의 값 : 8 b-a는 2입니다. 
+  
+  public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in); 
+		int a, b; 
+		int result =0; 
+		
+		System.out.print("a의 값 : "); a= sc.nextInt();  
+		do {
+			System.out.println("b의 값 : "); 
+			b = sc.nextInt(); 
+			if(b<=a) {
+				System.out.println("a보다 큰 값을 입력하세요! ");
+			}
+		}while(b<=a);
+		
+		result = b-a; 
+		System.out.println("b-a의 값은 : "+ result);
+	}
+  
+  <과제 11> 
+  //양의 정수를 입력하고 자릿수를 출력하는 프로그램을 작성하시오. 예를 들어 135를 입력하면 '그 수는 3자리 입니다.' 
+	//1314를 입력하면 '그 수는 4자리 입니다.' 라고 출력하면 된다. 
+ 
+  * 일단 이거 일리가 없다; 이게 무슨 알고리즘이야; 
+  
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in); 
+		int a; 
+		
+		System.out.println("양의 정수를 입력하시오 : ");a = sc.nextInt(); 
+		if(a>=100 & a<1000) {
+			System.out.println(a + "는 3자리 입니다.");
+		}
+		if(a>=1000 & a<10000) {
+			System.out.println(a + "는 4자리 입니다.");
+		}
+	}
+
+구조적 프로그래밍 
+하나의 입구와 하나의 출구를 가진 구성 요소만을 계층적으로 배치하여 프로그램을 구성하는 방법을 구조적 프로그래밍이라고 합니다. 
+구조적 프로그래밍은 순차, 선택, 반복이라는 3종류의 제어흐름을 사용합니다. 
+
+**보충수업 1-7 논리 연산과 드모르간 법칙 
+실습은 입력한 값을 2자리의 양수로 제한하는 프로그램이다. 
+
+public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in); 
+		int no; 
+		
+		System.out.println("2자리의 정수를 입력 해라 "); 
+		
+		do {
+			System.out.println("입력 :"); 
+			no = sc.nextInt(); 
+			
+		}while(no<10 || no>99); 
+		
+		System.out.println("변수의 값은 " +no );
+	}
+  
+  다중 루프 
+  반복 안에서 다시 반복 할 수 있다. 이런 반복을 루프가 중첩되는 수준에 따라 '이중 루프', '삼중 루프'라고 부른다. 
+  
+  실습 1-7 곱셈표 출력하기 
