@@ -327,4 +327,88 @@ ex) 0,1,2,3,4,5,6,7
 034 -> 0으로 시작하면 8진수이다.      
 
 
+// 입력한 수를 원하는 진수로 바꾸기 
+
+//배열 b의 모든 요소를 배열 a에 역순으로 복사하는 메서드 rcopy를 작성  
+	
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in); 
+		int no ; //변환하는 정수 
+		int cd; // 기수 
+		int dno; // 변환 후의 자릿수 
+		int retry; // again 
+		char[] cno = new char[32]; // 변환 후 각 자리의 숫자를 넣어두는 문자의 배열 
+		
+		System.out.println("10진수를 기수 변환한다."); 
+		do {
+			do {
+				System.out.println("변환하는 음이 아닌 정수 : ");
+				no = sc.nextInt();
+				}while (no <0);	
+			
+			do {
+				System.out.println("어떤 진수로 변환할까요?"); 
+				cd = sc.nextInt(); 
+			}while(cd<2 || cd>36) ;
+			
+			dno = cardConvR(no,cd,cno); 
+			System.out.println(cd + "진수로는 "); 
+			for(int i =dno -1; i>=0; i--) {
+				System.out.print(cno[i]);
+			}
+			System.out.println("입니다.");
+			
+			System.out.println("one more try ? 1 yes 2 no ");
+			retry = sc.nextInt(); 
+			
+			}while(retry==1);
+		}
+	
+	
+	//정수값 x를 r진수로 변환하여 배열 d에 아랫자리부터 넣어두고 자릿수를 반환한다. 
+	static int cardConvR(int x, int r, char[] d) {
+		int digits = 0; 
+		String dchar ="0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZ"; 
+		
+		do {
+			d[digits++] = dchar.charAt(x%r); //r로 나눈 나머지를 저장 
+			x /=r; 
+		}while (x!=0); 
+		return digits; 
+	}
+	
+	//문자열 거꾸로 출력하기,,,쉽네,,
+	1
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);  
+		String str = sc.nextLine(); 
+		
+		for(int i = str.length()- 1; i>=0 ;i-- ) {
+			System.out.print(str.charAt(i)); 
+		}
+	}
+	2
+	public static void main(String[] args) {
+		
+		String [] hello = {"H","E","L","L","O"}; 
+		for(int i=0; i < hello.length; i++) {
+			System.out.print(hello[i]); 
+		}
+		System.out.println();
+		reverse(hello); 
+		for(int i=0; i < hello.length; i++) {
+			System.out.print(hello[i]); 
+		}
+	}
+	static void swap (String [] a, int b, int c) {
+		String t = a[b]; 
+		a[b] = a[c]; 
+		a[c] = t; 
+	}
+	static void reverse(String [] a) {
+		for(int i=0; i<a.length/2 ; i++) {
+			swap(a,i,a.length-i-1); 
+		}
+	}
+
 
