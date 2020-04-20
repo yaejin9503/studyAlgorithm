@@ -503,4 +503,79 @@ Int[][] x = new int[2][4];
 		
 	}
 
+
+#오늘까지의 경과일 구하기 
+
+package sesoc.com;
+
+import java.util.Scanner;
+
+public class ExampleClass {
+	
+	static int[][] mdays = { 
+			{31,28,31,30,31,30,31,31,30,31,30,31}, 
+			{31,29,31,30,31,30,31,31,30,31,30,31}, 
+	}; 	
+	//다차원 함수 2행 4열의 2차원 배열 
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in); 
+		int retry; 
+		
+		System.out.println("그 해 경과 일수를 구합니다.");
+		
+		do {
+			System.out.println("년 : "); int year = sc.nextInt();
+			System.out.println("월 : "); int month = sc.nextInt(); 
+			System.out.println("일 : "); int day = sc.nextInt(); 
+			
+			System.out.printf("그 해 %d 일 째입니다.",dayOfYear(year,month,day));
+			
+			System.out.println("retry ? yes : 1 ,no :0");
+			retry = sc.nextInt();
+		}while(retry==1);
+	}
+	
+	
+	//서기 year년은 윤년인가? (윤년 : 1 / 평년 : 0)
+	static int isLeap(int year) {
+		return (year %4 ==0 && year%100 !=0 || year%400 ==0 ) ? 1 :0;
+	}
+	
+	//서기 y년 m월 d일의 그 해 경과 일 수를 구함 
+	static int dayOfYear(int y, int m, int d) {
+		int days = d; //일 수 
+		
+		for(int i =1; i<m ;i ++) { //1월 ~ (m-1)월의 일 수를 더함 
+			days += mdays[isLeap(y)][i-1]; 
+		}
+		return days; 
+	}
+}
+
+//Q8 메서드 dayOfYear를 변수 i와 days 없이 구현, while문을 사용 
+// Q9 y년 m월 d일의 그 해 남은 일 수 (12월 31일 이면 0, 12월 30일이면 1)를 구하는 메서드를 작성하시오. 
+static int leftDayOfYear(int y, int, m, int d )
+
+**배열에 관한 보충 
+
+빈 배열 
+--> 배열 요솟수는 0이어도 된다. 이런 배열을 빈 배열이라고 부른다. 
+
+배열 요소의 접근 
+--> 배열의 접근은 모두 런타임에 검사된다. 만약 0미만 또는 배열 요솟수 이상의 인덱스를 사용하면Iㅑ
+IndexOutOfBoundsException이 발생한다. 
+
+배열 초기화의 쉼표 
+int [] a= {1,2,3,4,} ; 
+맨 마지막 요소 뒤에 ,를 삽입해도 괜찮음 
+
+다차원 배열의 복제 
+다차원 배열의 복제는 최상위의 1레벨만 수행한다.  
+
+02-2 클래스 
+==> 클래스는 임의의 데이터형을 자유로이 조합하여 만들 수 있는 자료구조이다. 
+
+클래스 선언 
+여러 형의 요소를 조합하여 만든 자료구조가 클래스이다. 물론 우연히 요소의 형이 모두 같을 수도 있다. 
+
 	
