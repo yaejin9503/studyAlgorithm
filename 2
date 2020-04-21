@@ -578,4 +578,152 @@ int [] a= {1,2,3,4,} ;
 클래스 선언 
 여러 형의 요소를 조합하여 만든 자료구조가 클래스이다. 물론 우연히 요소의 형이 모두 같을 수도 있다. 
 
+public class xyz {
+	int x;
+	long y; 
+	double z; 
+}
+클래스를 생성 해 준 뒤 
+
+public static void main(String[] args) {
+		xyz a; 
+		a = new xyz(); 
+		// xyz a = new xyz(); 
+	}
+
+이런식으로 사용가능 하다.
+
+실습 2-14 
+<클래스의 배열> 
+package sesoc.com;
+
+import java.util.Scanner;
+
+public class PhysicalExamination {
+
+	static final int VMAX = 21; 
 	
+	static class PhyscData {
+		String name; 
+		int height; 
+		double vision;
+
+		//생성자
+		public PhyscData(String name, int height, double vision) {
+			super();
+			this.name = name;
+			this.height = height;
+			this.vision = vision;
+		} 
+		
+	}
+	//키의 평균값을 구함 
+	static double avezheight(PhyscData[] dat) {
+		double sum = 0; 
+		
+		for(int i=0; i< dat.length; i++) {
+			sum += dat[i].height; 
+		}
+		return sum/dat.length; 
+	}
+	static void disVistion(PhyscData[] dat,int[] dist) {
+		int i=0; 
+		dist[i] =0; 
+		for(i=0; i< dat.length;i++) {
+			if(dat[i].vision >=0.0&& dat[i].vision <=VMAX/10.0) {
+				dist[(int)(dat[i].vision * 10)]++; 
+			}
+		}
+		
+	}
+	
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in); 
+		
+		PhyscData [] x = {
+				new PhyscData("박현",162,0.3), 
+				new PhyscData("a",173,0.7), 
+				new PhyscData("b",175,2.0), 
+				new PhyscData("c",171,1.5), 
+				new PhyscData("d",168,0.4), 
+				new PhyscData("e",174,1.2), 
+				new PhyscData("f",169,0.8), 
+		};
+		
+		int[] vdist = new int[VMAX]; 
+		
+		System.out.println("==신체검사리스트==");
+		System.out.println("이름   키   시력 ");
+		System.out.println("==============");
+		
+		for(int i=0; i<x.length;i++) {
+			System.out.printf("%-8s%3d%5.1f\n",x[i].name,x[i].height,x[i].vision);
+		}
+		System.out.printf("평균키 ? %5.1fcm\n",avezheight(x));
+		
+		disVistion(x,vdist); 
+		System.out.println("시력 분포");
+		for(int i=0; i<VMAX;i++) {
+			System.out.printf("%3.1f~:%2d명\n",i/10.0, vdist[i]);
+		}
+	 
+	}
+}
+
+<과제 10> 시력분포도에 명으로 있는걸 *로 바꾸기 
+
+static void disVistion(PhyscData[] dat, String[] dist) {
+		int i=0;  
+		for(i=0;i<VMAX;i++) {
+			dist[i] ="";
+		}
+		
+		for(i=0; i< dat.length;i++) { 
+			if(dat[i].vision >=0.0&& dat[i].vision <=VMAX/10.0) {
+				dist[(int)(dat[i].vision * 10)] += "*"; 
+			}
+		}
+		
+	}
+이 부분만 이렇게 변경해주면 된다. 
+
+<과제11> //잠깐 스킵 
+
+클래스에 대한 보충 
+
+1. 클래스 본체에서는 다음과 같은 내용을 선언할 수 있다. 
+-> 멤버(필드/메서드/중첩클래스/중첩 인터페이스) 
+-> 클래스 초기화/ 인스턴스 초기화 
+-> 생성자 
+
+2. 필드 /메서드/ 생성자를 선언할 때 public/protected/private 을 저장할 수 있다. 
+3. 메서드/생성자는 다중으로 정의(오버로드) 할 수 있다. 
+4. final로 선언한 필드는 한 번만 값을 대입 할 수 있다. 
+5. 생성자는 새로 생성한 인스턴스의 초기화를 위해 사용된다. 
+
+
+
+공개 클래스 
+클래스 접근 제한자 public을 붙여 선언한 클래스로, 다른 패키지에서 사용할 수 있는 공개 클래스(public class)이다. 
+
+Final 클래스 
+클래스 접근 제한자 final을 붙여 선언한 클래스로, 서브 클래스를 가질 수 없다. 
+(새로운 클래스를 상속 할 수 없다.) 파이널 클래스가 된다. 
+
+파생 클래스 
+클래스 A를 직접 상위 클래스로 하려면 선언 할 때 extends A를 추가해야 한다. 
+이 때 선언한 클래스는 클래스 A의 직접 서브 클래스가 된다. 
+
+인터페이스 구현 
+인터페이스 x를 구현하려면 선언에 implements x를 추가해야 한다. 
+
+추상 클래스 
+클래스 접근 제한자 abstract를 붙여 클래스를 선언하면 추상 메서드를 가질 수 있는 추상 클래스가 된다. 추상 클래스형은 불완전한 클래스이므로 인스턴스를 만 들 수 없다. 
+
+중첩 클래스 
+클래스 또는 인터페이스 안에 선언한 클래스는 중첩 클래스가 된다. 
+- 멤버 클래스는 그선언이 다른 클래스 또는 인터페이스 선언에 둘러싸인 클래스이다. 
+- 내부 클래스는 명시적으로도 암묵적으로도 정적으로 선언되지 않는 중첩클래스 이다. 정적 초기화나 멤버 인터페이스 선언을 할 수 없다. 그리고 컴파일할 떄 상수 필드가 아닌 한 정적 멤버를 선언할 수 없다
+- 지역 클래스는 이름이 주어진 중첩 클래스인 내부 클래스이다. 어떤 클래스의 멤버도 될 수 없다. 
+
+
