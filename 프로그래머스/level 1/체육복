@@ -1,0 +1,38 @@
+import java.util.ArrayList;
+import java.util.List;
+
+class Solution {
+    public int solution(int n, int[] lost, int[] reserve) {
+        int answer = 0; 
+		answer = n - lost.length; 
+		List<Integer> lostList = new ArrayList<Integer>();
+		for(int i: lost) lostList.add(i); 
+		
+		List<Integer> reserveList = new ArrayList<Integer>();
+		for(int i: reserve) reserveList.add(i); 
+		
+		for(int i=0; i< lostList.size();i++) { 
+			for(int j =0; j<reserveList.size();j++) {
+				if(lostList.get(i) == reserveList.get(j)) {
+					lostList.remove(i);
+					reserveList.remove((j)); 
+					answer++; 
+					break;
+				}
+			}
+		}
+		for(int i=0; i< lostList.size(); i++) {
+            int lostNum = lostList.get(i);
+			for(int j=0; j< reserveList.size() ;j++) {
+				int reserveNum = reserveList.get(j); 
+				if(lostNum == reserveNum-1 || lostNum == reserveNum+1) {
+					reserveList.remove(j); 
+					answer++; 
+					break; 
+				}
+			}	
+		}
+		
+		return answer; 
+    }
+}
