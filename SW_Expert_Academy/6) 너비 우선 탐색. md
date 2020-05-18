@@ -1,3 +1,7 @@
+<b>너비 우선 탐색</b> 
+
+한 줄 탐색을 다 한 뒤 그 다음 줄로 넘어가는 탐색 방법 
+
 ``` 
 def bfs(graph, start_node):
     visited = list()
@@ -32,4 +36,9 @@ graph['J'] = ['I']
 #print(graph)
 print(bfs(graph, 'A'))
 ```
+
+![bfs1](https://user-images.githubusercontent.com/54971846/82191757-f9b22080-992d-11ea-9bad-1f879220145c.jpg)
+<h5> 너비 우선 순위 코드 진행 </h5>
+![BFS](https://user-images.githubusercontent.com/54971846/82191772-fdde3e00-992d-11ea-8a41-84150fc3eee4.jpg)
+<h5> 기본 원리 그림 </h5>
 
